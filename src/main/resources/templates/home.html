@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html th:lang="#{lang}" translate="no" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Home</title>
+        <meta th:replace="~{pieces/meta}">
+
+        <favicon th:replace="~{pieces/favicon}"/>
+
+        <link rel="stylesheet" th:href="@{https://use.typekit.net/yym2vzw.css}">
+        <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}">
+    </head>
+
+    <body>
+        <div id="app"></div>
+
+        <script type="importmap">
+		{
+			"imports": {
+				"engine": "/js/engine.js"
+			}
+		}
+		</script>
+
+        <!-- script type="importmap">
+		{
+			"imports": {
+				"engine": "<%=raiz %>/src/js/engine.js",
+				"jquery": "<%=raiz %>/mods/jquery/dist/jquery.js",
+				"vue": "<%=raiz %>/mods/vue/dist/vue.esm-browser.js",
+				"MCU": "<%=raiz %>/mods/@material/material-color-utilities/dist/index.js",
+				"lottie": "<%=raiz %>/mods/lottie-web/build/player/lottie.js",
+				"vue-lottie": "<%=raiz %>/mods/vue-lottie/dist/build.js"
+			}
+		}
+		</script -->
+
+        <script type="module" th:src="@{http://localhost:5173/src/main.js}"></script>
+    </body>
+</html>
