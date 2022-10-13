@@ -9,7 +9,6 @@ import java.util.List;
 
 @Repository
 public interface SolicitudRepository extends JpaRepository<Solicitud, Integer> {
-
     public boolean existsById(int id);
     public boolean existsByEmail(String email);
 

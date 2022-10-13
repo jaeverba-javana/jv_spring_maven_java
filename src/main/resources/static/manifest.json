@@ -1,7 +1,7 @@
 {
 	"name": "Javier Vergara",
-	"short_name": "J V",
-	"start_url": "javiervergara.com",
+	"short_name": "JV",
+	"start_url": "http://192.168.0.25:8082",
 	"display": "standalone",
 	"theme_color": "rgba(0, 128, 128, 1)",
 	"icons": [
@@ -9,8 +9,7 @@
 			"src": "android-chrome-192x192.png",
 			"sizes": "192x192",
 			"type": "image/png"
-		},
-		{
+		}, {
 			"src": "android-chrome-512x512.png",
 			"sizes": "512x512",
 			"type": "image/png"

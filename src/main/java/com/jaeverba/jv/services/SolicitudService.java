@@ -20,7 +20,7 @@ public class SolicitudService {
     public int createSolicitud(Solicitud solicitud) {
         try {
             if (!solicitudRepository.existsByEmail(solicitud.getEmail())) {
-                solicitud.setId(null == solicitudRepository.findMaxId()? 0 : solicitudRepository.findMaxId() + 1);
+                //solicitud.setId(null == solicitudRepository.findMaxId()? 0 : solicitudRepository.findMaxId() + 1);
                 solicitud.setAprobado(false);
                 solicitud.setHora(DateTimeFormatter.ofPattern("HH:mm:ss").format(LocalDateTime.now()));
                 solicitud.setFecha(DateTimeFormatter.ofPattern("yyyy-MM-dd").format(LocalDateTime.now()));

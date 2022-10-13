@@ -4,8 +4,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 @Entity
 @ToString
@@ -22,6 +24,7 @@ public class Solicitud {
     private String nombres;
 
     @Getter @Setter
+    @Column(unique = true)
     private String email;
 
     @Getter @Setter
