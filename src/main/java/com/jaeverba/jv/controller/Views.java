@@ -13,8 +13,10 @@ public class Views {
     @RequestMapping("/")
     public String home(HttpServletRequest request, HttpServletResponse response, Model model) {
 
-        String idioma = Idioma.getLang(request, response);
-        model.addAttribute("lang", idioma);
+        String lang = Idioma.getLang(request, response);
+        System.out.println(lang);
+
+        model.addAttribute("lang", lang);
 
         return "home";
     }

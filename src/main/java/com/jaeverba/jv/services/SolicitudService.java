@@ -18,18 +18,36 @@ public class SolicitudService {
 
     @Transactional
     public int createSolicitud(Solicitud solicitud) {
+        int n = 0;
+
         try {
             if (!solicitudRepository.existsByEmail(solicitud.getEmail())) {
-                //solicitud.setId(null == solicitudRepository.findMaxId()? 0 : solicitudRepository.findMaxId() + 1);
-                solicitud.setAprobado(false);
+                solicitud.setId(null == solicitudRepository.findMaxId()? 0 : solicitudRepository.findMaxId() + 1);
                 solicitud.setHora(DateTimeFormatter.ofPattern("HH:mm:ss").format(LocalDateTime.now()));
                 solicitud.setFecha(DateTimeFormatter.ofPattern("yyyy-MM-dd").format(LocalDateTime.now()));
+                solicitud.setCode(com.jaeverba.jv.utils.Random.password(20));
                 solicitudRepository.save(solicitud);
-                return 1;
-            } else return 0;
+                n = 1;
+            }
         } catch (Exception e) {
             throw e;
         }
+
+        return n;
+    }
+
+    @Transactional
+    public boolean delete(String email) {
+        boolean borrado = false;
+
+        try {
+            solicitudRepository.deleteByEmail(email);
+            borrado = true;
+        } catch (Exception e) {
+            throw e;
+        }
+
+        return borrado;
     }
 
     public List<Solicitud> getAll() {

@@ -30,7 +30,7 @@ public class Idioma {
     }
 
     public static String getNavigatorLanguage (HttpServletRequest request) {
-        Matcher matc = Pattern.compile("(^[a-z]{2})").matcher(request.getHeader("Accept-Language"));
+        Matcher matc = Pattern.compile("(^[a-z]{2})").matcher(request.getHeader("Accept-Language") != null? request.getHeader("Accept-Language") : "es");
         if (matc.find()) {
             return matc.group(1);
         } else return "es";

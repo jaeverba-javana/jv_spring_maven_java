@@ -36,5 +36,9 @@ public class Solicitud {
     @Getter @Setter
     private String hora;
 
+    @Getter @Setter
+    @Column(unique = true, length = 20)
+    private String code;
+
     public Solicitud() {}
 }
