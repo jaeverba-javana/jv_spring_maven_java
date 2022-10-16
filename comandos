@@ -1,0 +1,8 @@
+Construir con docker
+docker build -t jaeverba/jv:spring-0.3.0 .
+
+Correr contenedor
+docker run --name jv_spring.0.3.0_1 -p 80:8080 jaeverba/jv:spring-0.3.0
+
+Push con docker
+docker push jaeverba/jv:spring-0.3.0
