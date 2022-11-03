@@ -1,8 +1,8 @@
 package com.jaeverba.jv.controller.send_in_blue.email.transactional;
 
 import com.jaeverba.jv.entities.Solicitud;
-import lombok.Getter;
-import lombok.Setter;
+//import lombok.Getter;
+//import lombok.Setter;
 import lombok.ToString;
 import sendinblue.ApiClient;
 import sendinblue.ApiException;
@@ -11,11 +11,11 @@ import sendinblue.auth.ApiKeyAuth;
 import sibApi.TransactionalEmailsApi;
 import sibModel.*;
 
-import javax.annotation.processing.Filer;
+//import javax.annotation.processing.Filer;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
+//import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +48,7 @@ public class Email {
         sender.setEmail("jaeverba@gmail.com");
         sender.setName("Javier Vergara");
 
-        List<SendSmtpEmailTo> toList = new ArrayList<SendSmtpEmailTo>();
+        List<SendSmtpEmailTo> toList = new ArrayList<>();
             SendSmtpEmailTo to = new SendSmtpEmailTo();
             to.setEmail(solicitud.getEmail());
             to.setName(solicitud.getNombres());
@@ -60,12 +60,9 @@ public class Email {
 
         File archivo = null;
         FileReader fileReader = null;
-        BufferedReader bufferedReader = null;
+        BufferedReader bufferedReader;
 
-        //if (archivo.exists()) System.out.println("el arcjivo existe");
-        //else System.out.println("el archivo no existe");
-
-        String template = "";
+        StringBuilder template = new StringBuilder();
 
         try {
             archivo = new File("recursos/html/plantillas/correos/contactme_email_confirmation.html");
@@ -74,13 +71,14 @@ public class Email {
             String linea;
 
             while ((linea = bufferedReader.readLine()) != null) {
-                template += linea;
+                template.append(linea);
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             try {
                 if (archivo != null) {
+                    assert fileReader != null;
                     fileReader.close();
                 }
             } catch (Exception e2) {
@@ -90,7 +88,7 @@ public class Email {
 
 
 
-        return new Email(sender, toList, replyTo, solicitud.getMensaje(), template);
+        return new Email(sender, toList, replyTo, solicitud.getMensaje(), template.toString());
     }
 
     public Boolean send() {
@@ -98,7 +96,7 @@ public class Email {
 
         //TODO: API-KEY a ser borrada o cambiada para git
         ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("api-key");
-        apiKey.setApiKey("api-key");
+        apiKey.setApiKey("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");
 
         TransactionalEmailsApi api = new TransactionalEmailsApi();
 
