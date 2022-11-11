@@ -1,6 +1,6 @@
 FROM openjdk:20-jdk-slim
 
-COPY "target/jv-0.0.1-SNAPSHOT.jar" "app.jar"
+COPY "target/jv-0.2.0.jar" "app.jar"
 COPY "recursos/" "recursos/"
 #ADD myDb myDb
 

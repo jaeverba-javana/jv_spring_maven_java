@@ -96,7 +96,7 @@ public class Email {
 
         //TODO: API-KEY a ser borrada o cambiada para git
         ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("api-key");
-        apiKey.setApiKey("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");
+        apiKey.setApiKey("clave api");
 
         TransactionalEmailsApi api = new TransactionalEmailsApi();
 
